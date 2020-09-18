@@ -4,7 +4,6 @@ public class SortColumns
 {
 	private String[] sample;
 
-	ArrayList<String> arr = new ArrayList<String>();
 	ArrayList<Integer> output = new ArrayList<Integer>();
 
  //Fuction
@@ -16,16 +15,19 @@ public class SortColumns
 			
 			for(int j = 0; j<a.length-1;j++)
 			{
+				//check if not in sorted order
 				if(a[j].charAt(i)>a[j+1].charAt(i))
 				{
 					output.add(i);
 					break;
 				}
+				//check if input has different length of Strings 
 				if(a[i].length()!=a[j+1].length())
 				{
 					output.add(-1);
 					return output;
 				}
+				//check if input is already sort in non-decreasing order and no indice can be delete
 				if(a[i].charAt(i)<a[j+1].charAt(i) && (a[i].length()&a[j+1].length())==1)
 				{
 					return output;
@@ -39,13 +41,14 @@ public class SortColumns
 		return output;
 	}
 
+	//helper method to generate the input array
 	private void generateSample(String[] a)
 	{	
 		sample = new String[a.length];
 		for(int i = 0; i<a.length; i++)
 			sample[i]=a[i];
 	}
-
+	//helper method toString to visualize the array
  	public String toString()
   	{
 	  	String result = "Input: A={ ";
